@@ -8,15 +8,18 @@ import jakarta.persistence.Table;
 
 import java.util.Date;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name= "pelicula")
-public class Pelicula {
+public class Pelicula extends RepresentationModel<Pelicula>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
+
 
     @Column(name="titulo")
     private String titulo;

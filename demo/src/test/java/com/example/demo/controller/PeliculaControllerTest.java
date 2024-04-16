@@ -64,16 +64,16 @@ public class PeliculaControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/peliculas"))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].titulo", Matchers.is("Titanic")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].year", Matchers.is(1997)))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].director", Matchers.is("James Cameron")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].genero", Matchers.is("Romance")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].sinopsis", Matchers.is("Un joven artista y una joven aristócrata se enamoran a bordo del primer y mítico viaje del RMS Titanic.")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[1].titulo", Matchers.is("Avatar")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[1].year", Matchers.is(2009)))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[1].director", Matchers.is("James Cameron")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[1].genero", Matchers.is("Ciencia Ficción")))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[1].sinopsis", Matchers.is("En el año 2154, Jake Sully, un ex-marine condenado a vivir en una silla de ruedas, sigue siendo un auténtico guerrero.")));
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[0].titulo", Matchers.is("Titanic")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[0].year", Matchers.is(1997)))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[0].director", Matchers.is("James Cameron")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[0].genero", Matchers.is("Romance")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[0].sinopsis", Matchers.is("Un joven artista y una joven aristócrata se enamoran a bordo del primer y mítico viaje del RMS Titanic.")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[1].titulo", Matchers.is("Avatar")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[1].year", Matchers.is(2009)))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[1].director", Matchers.is("James Cameron")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[1].genero", Matchers.is("Ciencia Ficción")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$._embedded.peliculaList[1].sinopsis", Matchers.is("En el año 2154, Jake Sully, un ex-marine condenado a vivir en una silla de ruedas, sigue siendo un auténtico guerrero.")));
     }
 
 }
