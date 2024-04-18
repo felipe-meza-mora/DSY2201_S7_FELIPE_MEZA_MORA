@@ -33,21 +33,24 @@ public class PeliculaController {
     @GetMapping
     public CollectionModel<EntityModel<Pelicula>> getAllPeliculas() {
         List<Pelicula> peliculas = peliculaService.getAllPeliculas();
-
+    
         List<EntityModel<Pelicula>> peliculaResources = peliculas.stream()
-                .map(pelicula -> EntityModel.of(pelicula,
-                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getPeliculaById(pelicula.getId())).withSelfRel()
-                        ))
+                .map(pelicula -> {
+                    int id = pelicula.getId(); // Asegúrate de que el ID no sea nulo
+                    return EntityModel.of(pelicula,
+                            WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getPeliculaById(id)).withSelfRel()
+                    );
+                })
                 .collect(Collectors.toList());
-
+    
         WebMvcLinkBuilder linkTo = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllPeliculas());
         CollectionModel<EntityModel<Pelicula>> resources = CollectionModel.of(peliculaResources, linkTo.withRel("peliculas"));
-
+    
         return resources;
     }
 
      @GetMapping("/{id}")
-    public EntityModel<Pelicula> getPeliculaById(@PathVariable int id) {
+    public EntityModel<Pelicula> getPeliculaById(@PathVariable Integer id) {
         Optional<Pelicula> pelicula = peliculaService.getPeliculaById(id);
         
         if (pelicula.isPresent()) {
