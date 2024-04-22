@@ -1,0 +1,7 @@
+com\example\demo\DemoApplication.class
+com\example\demo\service\PeliculaService.class
+com\example\demo\controller\PeliculaNotFoundException.class
+com\example\demo\model\Pelicula.class
+com\example\demo\service\PeliculaServicelmpl.class
+com\example\demo\repository\PeliculaRepository.class
+com\example\demo\controller\PeliculaController.class
